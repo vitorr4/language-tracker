@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Link, Redirect} from 'react-router-dom';
+import Journal from './pages/Journal'
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+    <div className='container'>
+      <Route exact path='/pages/journal' component={Journal}/>
+      <Route exact path='/' render={() => {
+        return (
+          <Redirect to='/pages/home' />
+        )
+      }} component={Home} />
+      <footer className='footer'>
         <a
-          className="App-link"
-          href="https://reactjs.org"
+          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Powered by{' '}
+          <img src="/vercel.svg" alt="Vercel Logo" />
         </a>
-      </header>
+      </footer>
+
     </div>
   );
 }
